@@ -2,7 +2,7 @@ body {
   color: #cccccc;
   padding: 0;
   margin: 0;
-  opacity: 0.9;
+  opacity: 1;
   background: linear-gradient(135deg, #6b6b1055 25%, transparent 25%) -21px 0/
       42px 42px,
     linear-gradient(225deg, #6b6b10 25%, transparent 25%) -21px 0/ 42px 42px,
@@ -19,7 +19,7 @@ body {
 header {
   height: 60px;
   line-height: 60px;
-  background-color: black;
+  background-color: #252526;
   text-align: center;
   font-size: 2em;
 }
@@ -47,11 +47,11 @@ button#click-me {
   cursor: pointer;
   animation: bouncy 2s infinite linear;
   position: relative;
-  background-color: transparent;
+  background-color: #ff00ff33;
 }
 
 button#click-me:hover {
-  background-color: #ff00ff33;
+  background-color: #ff00ff99;
 }
 
 @keyframes bouncy {
