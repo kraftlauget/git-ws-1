@@ -1,8 +1,13 @@
 body {
-  background-color: #333333;
   color: #cccccc;
   padding: 0;
   margin: 0;
+  opacity: 0.9;
+  background: linear-gradient(135deg, #6b6b1055 25%, transparent 25%) -21px 0/
+      42px 42px,
+    linear-gradient(225deg, #6b6b10 25%, transparent 25%) -21px 0/ 42px 42px,
+    linear-gradient(315deg, #6b6b1055 25%, transparent 25%) 0px 0/ 42px 42px,
+    linear-gradient(45deg, #6b6b10 25%, #333333 25%) 0px 0/ 42px 42px;
 }
 
 .layout {
@@ -14,7 +19,7 @@ body {
 header {
   height: 60px;
   line-height: 60px;
-  background-color: #252526;
+  background-color: black;
   text-align: center;
   font-size: 2em;
 }
