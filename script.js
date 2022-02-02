@@ -1,5 +1,7 @@
-$(document).ready(function () {
-    $("#click-me").on("click", () => {
-        alert("test");
-    });
+const clickMeHandler = () => {
+alert("test");
+};
+
+$(document).ready(() => {
+$("#click-me").on("click", clickMeHandler);
 });
