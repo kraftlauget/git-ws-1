@@ -12,6 +12,22 @@ body {
     linear-gradient(45deg, #6b6b10 25%, #333333 25%) 0px 0/ 42px 42px;
 }
 
+.rick {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  animation: rolling 2s infinite linear;
+}
+
+@keyframes rolling {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 .layout {
   height: 100vh;
   display: flex;
@@ -50,6 +66,7 @@ button#click-me {
   animation: bouncy 2s infinite linear;
   position: relative;
   background-color: #ff00ff33;
+  user-select: none;
 }
 
 button#click-me:hover {
