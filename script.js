@@ -19,7 +19,7 @@ const getDistance = (x1, y1, x2, y2) => {
 $(document).ready(() => {
   $("#click-me").on("click", clickMeHandler);
   const movementSpeed = 10;
-  const distanceFromPointerToStop = 150;
+  const distanceFromPointerToStop = 50;
 
   let pointerX = 0;
   let pointerY = 0;
