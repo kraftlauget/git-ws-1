@@ -38,10 +38,7 @@ $(document).ready(() => {
       const rickY = rickYs[i] ?? 0;
 
       const distanceFromPointer = getDistance(rickX, rickY, pointerX, pointerY);
-      if (distanceFromPointer < distanceFromPointerToStop) {
-        console.log("returning?");
-        return;
-      }
+      if (distanceFromPointer < distanceFromPointerToStop) return;
 
       const directionX = pointerX - rickX;
       const directionY = pointerY - rickY;
