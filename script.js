@@ -15,8 +15,8 @@ $(document).ready(() => {
   let pointerX = 0;
   let pointerY = 0;
 
-  let rickX = 0;
-  let rickY = 0;
+  let rickXs = [];
+  let rickYs = [];
 
   document.onmousemove = function (event) {
     pointerX = event.pageX;
@@ -32,6 +32,9 @@ $(document).ready(() => {
 
   setInterval(() => {
     $(".rick").each((i, image) => {
+      const rickX = rickXs[i] ?? 0;
+      const rickY = rickYs[i] ?? 0;
+
       const directionX = pointerX - rickX;
       const directionY = pointerY - rickY;
 
@@ -53,13 +56,13 @@ $(document).ready(() => {
         pointerY
       );
 
-      if (newDistanceFromPointer > movementSpeed) {
-        rickX = newRickX;
-        rickY = newRickY;
+      if (newDistanceFromPointer > movementSpeed * 10) {
+        rickXs[i] = newRickX;
+        rickYs[i] = newRickY;
       }
 
-      $(image).css("left", rickX);
-      $(image).css("top", rickY);
+      $(image).css("left", newRickX);
+      $(image).css("top", newRickY);
     });
   }, 10);
 });
