@@ -19,13 +19,17 @@ const getDistance = (x1, y1, x2, y2) => {
 $(document).ready(() => {
   $("#click-me").on("click", clickMeHandler);
   const movementSpeed = 10;
-  const distanceFromPointerToStop = 50;
+  const distanceFromPointerToStop = 110;
+  const defaultSize = 40;
+  const maxSize = 100;
 
   let pointerX = 0;
   let pointerY = 0;
 
   let rickXs = [];
   let rickYs = [];
+
+  let waitCounters = [];
 
   document.onmousemove = function (event) {
     pointerX = event.pageX;
@@ -36,9 +40,22 @@ $(document).ready(() => {
     $(".rick").each((i, image) => {
       const rickX = rickXs[i] ?? 0;
       const rickY = rickYs[i] ?? 0;
+      const waitCounter = waitCounters[i] ?? 0;
 
       const distanceFromPointer = getDistance(rickX, rickY, pointerX, pointerY);
-      if (distanceFromPointer < distanceFromPointerToStop) return;
+      if (distanceFromPointer < distanceFromPointerToStop) {
+        waitCounters[i] = waitCounter + 1;
+
+        let newSize = waitCounters[i] + defaultSize;
+        newSize = newSize > 100 ? maxSize : newSize;
+
+        $(image).css("width", `${newSize}px`);
+        $(image).css("height", `${newSize}px`);
+
+        return;
+      }
+
+      waitCounters[i] = 0;
 
       const directionX = pointerX - rickX;
       const directionY = pointerY - rickY;
@@ -54,6 +71,8 @@ $(document).ready(() => {
 
       $(image).css("left", rickXs[i]);
       $(image).css("top", rickYs[i]);
+      $(image).css("width", `${defaultSize}px`);
+      $(image).css("height", `${defaultSize}px`);
     });
   }, 10);
 });
