@@ -9,8 +9,17 @@ const clickMeHandler = () => {
   rickRoll();
 };
 
+const getDistance = (x1, y1, x2, y2) => {
+  let y = x2 - x1;
+  let x = y2 - y1;
+
+  return Math.sqrt(x * x + y * y);
+};
+
 $(document).ready(() => {
   $("#click-me").on("click", clickMeHandler);
+  const movementSpeed = 10;
+  const distanceFromPointerToStop = 150;
 
   let pointerX = 0;
   let pointerY = 0;
@@ -23,17 +32,16 @@ $(document).ready(() => {
     pointerY = event.pageY;
   };
 
-  function getDistance(x1, y1, x2, y2) {
-    let y = x2 - x1;
-    let x = y2 - y1;
-
-    return Math.sqrt(x * x + y * y);
-  }
-
   setInterval(() => {
     $(".rick").each((i, image) => {
       const rickX = rickXs[i] ?? 0;
       const rickY = rickYs[i] ?? 0;
+
+      const distanceFromPointer = getDistance(rickX, rickY, pointerX, pointerY);
+      if (distanceFromPointer < distanceFromPointerToStop) {
+        console.log("returning?");
+        return;
+      }
 
       const directionX = pointerX - rickX;
       const directionY = pointerY - rickY;
@@ -44,25 +52,11 @@ $(document).ready(() => {
       const directionXNormalized = directionX / directionLength;
       const directionYNormalized = directionY / directionLength;
 
-      const movementSpeed = 10;
+      rickXs[i] = rickX + directionXNormalized * movementSpeed;
+      rickYs[i] = rickY + directionYNormalized * movementSpeed;
 
-      const newRickX = rickX + directionXNormalized * movementSpeed;
-      const newRickY = rickY + directionYNormalized * movementSpeed;
-
-      const newDistanceFromPointer = getDistance(
-        newRickX,
-        newRickY,
-        pointerX,
-        pointerY
-      );
-
-      if (newDistanceFromPointer > movementSpeed * 10) {
-        rickXs[i] = newRickX;
-        rickYs[i] = newRickY;
-      }
-
-      $(image).css("left", newRickX);
-      $(image).css("top", newRickY);
+      $(image).css("left", rickXs[i]);
+      $(image).css("top", rickYs[i]);
     });
   }, 10);
 });
