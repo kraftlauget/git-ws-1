@@ -12,23 +12,35 @@ const clickMeHandler = () => {
 $(document).ready(() => {
   $("#click-me").on("click", clickMeHandler);
 
+  let pointerX = 0;
+  let pointerY = 0;
+
+  let rickX = 0;
+  let rickY = 0;
+
+  document.onmousemove = function (event) {
+    pointerX = event.pageX;
+    pointerY = event.pageY;
+  };
+
   setInterval(() => {
     $(".rick").each((i, image) => {
-      const directionX = Math.random() * 2 - 1;
-      const directionY = Math.random() * 2 - 1;
-      const speedX = Math.random() * 100;
-      const speedY = Math.random() * 100;
+      const directionX = pointerX - rickX;
+      const directionY = pointerY - rickY;
 
-      console.log(image.style);
+      const directionLength = Math.sqrt(
+        directionX * directionX + directionY * directionY
+      );
+      const directionXNormalized = directionX / directionLength;
+      const directionYNormalized = directionY / directionLength;
 
-      const previousX = image.style.left ? parseInt(image.style.left) : 0;
-      const previousY = image.style.top ? parseInt(image.style.top) : 0;
+      const movementSpeed = 10;
 
-      image.style.left = `${previousX + directionX * speedX}px;`;
-      image.style.top = `${previousY + directionY * speedY}px;`;
+      rickX += directionXNormalized * movementSpeed;
+      rickY += directionYNormalized * movementSpeed;
 
-      $(image).css("left", previousX + directionX * speedX);
-      $(image).css("top", previousY + directionY * speedY);
+      $(image).css("left", rickX);
+      $(image).css("top", rickY);
     });
   }, 10);
 });
