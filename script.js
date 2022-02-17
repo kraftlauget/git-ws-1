@@ -23,6 +23,13 @@ $(document).ready(() => {
     pointerY = event.pageY;
   };
 
+  function getDistance(x1, y1, x2, y2) {
+    let y = x2 - x1;
+    let x = y2 - y1;
+
+    return Math.sqrt(x * x + y * y);
+  }
+
   setInterval(() => {
     $(".rick").each((i, image) => {
       const directionX = pointerX - rickX;
@@ -36,8 +43,20 @@ $(document).ready(() => {
 
       const movementSpeed = 10;
 
-      rickX += directionXNormalized * movementSpeed;
-      rickY += directionYNormalized * movementSpeed;
+      const newRickX = rickX + directionXNormalized * movementSpeed;
+      const newRickY = rickY + directionYNormalized * movementSpeed;
+
+      const newDistanceFromPointer = getDistance(
+        newRickX,
+        newRickY,
+        pointerX,
+        pointerY
+      );
+
+      if (newDistanceFromPointer > movementSpeed) {
+        rickX = newRickX;
+        rickY = newRickY;
+      }
 
       $(image).css("left", rickX);
       $(image).css("top", rickY);
