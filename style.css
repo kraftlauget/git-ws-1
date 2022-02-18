@@ -11,6 +11,22 @@ body {
   flex-direction: column;
 }
 
+header {
+  height: 60px;
+  line-height: 60px;
+  background-color: #252526;
+  text-align: center;
+  font-size: 2em;
+}
+
+footer {
+  height: 90px;
+  line-height: 90px;
+  background-color: #1e1e1e;
+  text-align: center;
+  font-size: 2em;
+}
+
 main {
   flex: 1;
   display: flex;
