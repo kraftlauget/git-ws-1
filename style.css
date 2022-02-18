@@ -41,6 +41,46 @@ main {
     linear-gradient(45deg, #6b6b10 25%, #333333 25%) 0px 0/ 42px 42px;
 }
 
+button#click-me {
+  font-size: 3rem;
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  animation: bouncy 2s infinite linear;
+  position: relative;
+  background-color: #ff00ff33;
+  user-select: none;
+}
+
+button#click-me:hover {
+  background-color: #ff00ff99;
+}
+
+@keyframes bouncy {
+  0% {
+    top: 0em;
+  }
+  40% {
+    top: 0em;
+  }
+  43% {
+    top: -0.9em;
+  }
+  46% {
+    top: 0em;
+  }
+  48% {
+    top: -0.4em;
+  }
+  50% {
+    top: 0em;
+  }
+  100% {
+    top: 0em;
+  }
+}
+
 .rick {
   width: 40px;
   height: 40px;
