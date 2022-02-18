@@ -1,12 +1,14 @@
 body {
   background-color: #333333;
   color: #cccccc;
+  padding: 0;
+  margin: 0;
 }
 
 .layout {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 main {
