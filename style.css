@@ -1,6 +1,12 @@
 body {
-  background-color: black;
-  color: yellow;
+  background-color: #333333;
+  color: #cccccc;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 main {
