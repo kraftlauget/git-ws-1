@@ -32,3 +32,11 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+.cool-background {
+  background: linear-gradient(135deg, #6b6b1055 25%, transparent 25%) -21px 0/
+      42px 42px,
+    linear-gradient(225deg, #6b6b10 25%, transparent 25%) -21px 0/ 42px 42px,
+    linear-gradient(315deg, #6b6b1055 25%, transparent 25%) 0px 0/ 42px 42px,
+    linear-gradient(45deg, #6b6b10 25%, #333333 25%) 0px 0/ 42px 42px;
+}
