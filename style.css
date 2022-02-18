@@ -33,3 +33,42 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+button#click-me {
+  font-size: 3rem;
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  animation: bouncy 2s infinite linear;
+  position: relative;
+  background-color: transparent;
+}
+
+button#click-me:hover {
+  background-color: #ff00ff33;
+}
+
+@keyframes bouncy {
+  0% {
+    top: 0em;
+  }
+  40% {
+    top: 0em;
+  }
+  43% {
+    top: -0.9em;
+  }
+  46% {
+    top: 0em;
+  }
+  48% {
+    top: -0.4em;
+  }
+  50% {
+    top: 0em;
+  }
+  100% {
+    top: 0em;
+  }
+}
