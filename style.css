@@ -40,3 +40,21 @@ main {
     linear-gradient(315deg, #6b6b1055 25%, transparent 25%) 0px 0/ 42px 42px,
     linear-gradient(45deg, #6b6b10 25%, #333333 25%) 0px 0/ 42px 42px;
 }
+
+.rick {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: rolling 2s infinite linear;
+}
+
+@keyframes rolling {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
