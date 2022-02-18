@@ -35,7 +35,7 @@ $(document).ready(() => {
       }
 
       moveRick(i, image);
-      resetRickSize();
+      resetRickSize(i, image);
     });
   }, intervalTimeout);
 });
